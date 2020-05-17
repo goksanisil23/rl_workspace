@@ -210,4 +210,5 @@ ax2.set_xlabel('episode #')
 ax2.set_ylabel('RMSVE w.r.t true state value')
 
 plt.show(fig)
+fig.savefig("TD_results.png")
 
