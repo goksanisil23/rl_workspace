@@ -17,3 +17,10 @@ The encoder on the motor is giving 48*(~34 = gear ratio)=1632 counts per rev, wi
 - Propagate the learnt weights to the next episode to keep learning
 ![](RL/images/random_walk.png)
 ![](RL/TD_with_state_aggregation/TD_results.png)
+
+## TD with state Aggregation in Random Walk Environment
+- Represent the states with one-hot encoding 
+- Generate a NN which has # states many inputs and single output for estimating the state value
+- Use ADAM optimization and TD update to update the weights at each agent step
+- Propagate the learnt weights to the next episode to keep learning
+![](RL/TD_with_neural_network/TD_NN_results.png)
