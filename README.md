@@ -7,7 +7,8 @@ DC motor currently being used is: http://xinhemotor.bossgoo.com/geared-motors/ge
 The encoder on the motor is giving 48*(~34 = gear ratio)=1632 counts per rev, with 2 of the hall sensors working in quadrature mode. In other words, reading just 1 rising edge of 1 hall sensor would give 408 encoder interrupts.
 
 
-### RL:
+### RL
 
-TD with state Aggregation
+# TD with state Aggregation in Random Walk Environment
 ![](RL/images/random_walk.png)
+![](RL/TD_with_state_aggregation/TD_results.png)
