@@ -10,4 +10,4 @@ The encoder on the motor is giving 48*(~34 = gear ratio)=1632 counts per rev, wi
 ### RL:
 
 TD with state Aggregation
-![RL/images/random_walk.png]
+![](RL/images/random_walk.png)
