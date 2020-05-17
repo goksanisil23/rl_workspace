@@ -6,6 +6,7 @@ import random
 import os
 from tqdm import tqdm
 
+#################### Random Walk Environment implementation ########################### 
 class RandomWalkEnvironment():
     def env_init(self, env_info={}):
         # env_info dict contains: num_states, start_state, left_terminal_state, right_terminal_state, seed
@@ -61,7 +62,7 @@ class RandomWalkEnvironment():
 
 
 
-############# agent
+############# Agent ####################################
 def agent_policy(rand_generator, state):
     # agent randomly chooses to go right or left with equal probability
     chosen_action = rand_generator.choice([0,1])
