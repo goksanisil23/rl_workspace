@@ -199,11 +199,12 @@ state_indices = np.linspace(current_env.left_terminal_state+1, current_env.right
 episode_indices = np.linspace(1, num_episodes, num=num_episodes)
 
 fig = plt.figure()
+fig.suptitle('Random Walk Environment Policy Evaluation with Semi Gradient TD', fontsize=12)
 ax1 = fig.add_subplot(211)
 ax2 = fig.add_subplot(212)
 
 ax1.plot(state_indices, test_agent.get_state_val())
-ax1.set_xlabel('states')
+ax1.set_xlabel('states within Random Walk Env.')
 ax1.set_ylabel('state values')
 
 ax2.plot(episode_indices, episodic_rmsve)
