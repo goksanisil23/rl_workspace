@@ -9,8 +9,9 @@ The encoder on the motor is giving 48*(~34 = gear ratio)=1632 counts per rev, wi
 
 
 # RL
-
-## TD with state Aggregation in Random Walk Environment
+## Policy Evaluation
+Temporal difference (TD) is a method that utilizes Markov property to get an estimate of the value ("goodness") of being in a specific state within an environment. TD updates the value of a state, towards it's own estimate of the value in the next state. TD(0) specifically keeps track of only previous state to compute the current state value. There is no model of the environment here, state estimation is acquired via sampling from the environment. 
+### TD with state Aggregation in Random Walk Environment
 - Aggregate the states close to each other under a "feature"
 - Each feature gets a weight to produce a "state value"
 - Apply semi-gradient TD update for updating weights during random walk
@@ -18,7 +19,7 @@ The encoder on the motor is giving 48*(~34 = gear ratio)=1632 counts per rev, wi
 ![](RL/images/random_walk.png)
 ![](RL/TD_with_state_aggregation/TD_results.png)
 
-## TD with state Aggregation in Random Walk Environment
+### TD with state Aggregation in Random Walk Environment
 - Represent the states with one-hot encoding 
 - Generate a NN which has # states many inputs and single output for estimating the state value
 - Use ADAM optimization and TD update to update the weights at each agent step
