@@ -1,7 +1,5 @@
-# libraries for tiling
 import numpy as np
 import matplotlib.pyplot as plt
-import tiles3 as tc
 
 # libraries for environment
 import cv2
@@ -25,6 +23,12 @@ BATCH_SIZE = 20
 GAMMA = 0.95
 EXPLORATION_DECAY = 0.995
 EXPLORATION_MIN = 0.01
+
+# capturing video
+cap = cv2.VideoCapture(0)
+frame_width = 512
+frame_height = 512
+video_out = cv2.VideoWriter('test1.avi', cv2.VideoWriter_fourcc(*'PIM1'), 25, (frame_width,frame_height))
 
 
 
@@ -95,8 +99,15 @@ class InvertedPendulum():
         ######## for rendering ############
         if animation_on:
             global inv_pend_renderer
+            global cap
+            global video_out
             for ii, tt in enumerate(sol.t):
                 rendered = inv_pend_renderer.step( [sol.y[0,ii], sol.y[1,ii], sol.y[2,ii], sol.y[3,ii] ], tt )
+
+                video_out.write(rendered)
+                    # print(rendered)
+                    # input()
+                
                 cv2.imshow( 'im', rendered )
                 cv2.moveWindow( 'im', 100, 100 )
 
@@ -230,7 +241,7 @@ current_env.env_init(env_info)
 
 test_agent = SarsaAgent()
 
-num_episodes = 1500
+num_episodes = 2000
 num_iterations = 500
 
 scores, episodes = [], []
@@ -267,6 +278,9 @@ for kk in tqdm(range(num_episodes)): # episode
             scores.append(score)
             episodes.append(kk)
 
+
+
+test_agent.model.save('cartpole_model.h5')
     # print(ctr)
 
 
@@ -277,7 +291,7 @@ plt.show()
 animation_on = True
 input("start the learnt agent")
 # while True:
-for kk in range(1000):
+for kk in range(10):
     ctr = 0
     state = current_env.env_start()
     state = np.reshape(state, [1, test_agent.state_size])
@@ -289,4 +303,5 @@ for kk in range(1000):
         state = next_state
         ctr = ctr + 1
 
-        
+cap.release()
+video_out.release()    
