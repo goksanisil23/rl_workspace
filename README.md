@@ -27,4 +27,12 @@ Temporal difference (TD) is a method that utilizes Markov property to get an est
 ![](RL/TD_with_neural_network/TD_NN_results.png)
 
 ### Deep SARSA on Cartpole
+- Includes the implementation of inverted pendulum, from https://github.com/mpkuse/inverted_pendulum. Duration of each action is 0.2s. Resolution of the solver for the pendulum dynamics is 0.1s.
+- Currently, pole starts upright with some offset, just to make sure agent learns how to balance by moving. If it starts perfectly upright, agent rather quickly learns just to stand still to keep balancing it. 
+- SARSA bootstraps off of the value that it's going to take next, which is sampled from it's own policy. So it learns about the "goodness" of its own policy.
+- DNN is used to estimate the value of state-action pair. Output of DNN has same size as action space (1 value for each action)
+- The crucial point is that; update on the "target" happens with the already decided (known) next_action and next_state: --> on-policy
+    target[action] = (reward + self.discount_factor * self.model.predict(next_state)[0][next_action])
+- For Deep Q learning, we will see that the above equation changes to: (so next_action won't be needed to do bootstrapping-->which makes it off-policy)
+    target[action] = (reward + self.discount_factor * np.amax(self.model.predict(next_state)[0]))
 ![](RL/Deep_SARSA/cartpole_with_SARSA.gif)
