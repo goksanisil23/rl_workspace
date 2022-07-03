@@ -1,8 +1,6 @@
-# lazy_robotics_workspace
-experimental area for lazy robotics projects with minimal functionality and minimal explanation to get started fast.
+# RL Workspace
+experimental area for reinforcement learning.
 
-
-# RL
 ## Policy Evaluation
 Temporal difference (TD) is a method that utilizes Markov property to get an estimate of the value ("goodness") of being in a specific state within an environment. TD updates the value of a state, towards it's own estimate of the value in the next state. TD(0) specifically keeps track of only previous state to compute the current state value. There is no model of the environment here, state estimation is acquired via sampling from the environment. 
 ### TD with state Aggregation in Random Walk Environment
